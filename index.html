@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACIRE Innovations Inc. | Consulting. Products. Possibilities.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0B1F3A;
+      --navy-mid: #112845;
+      --teal: #1D6A72;
+      --teal-light: #2A8F9A;
+      --gold: #C8963E;
+      --gold-light: #E0AC52;
+      --white: #FFFFFF;
+      --off-white: #F7F8FA;
+      --gray: #6B7280;
+      --gray-light: #E5E7EB;
+      --text: #1A2535;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(11, 31, 58, 0.97);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      padding: 1rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      font-weight: 600 !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+    .hamburger { display: none; cursor: pointer; color: white; font-size: 1.5rem; background: none; border: none; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      padding: 8rem 2.5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(29,106,114,0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(200,150,62,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      max-width: 800px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--teal-light);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.35);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { border-color: var(--teal-light); background: rgba(29,106,114,0.15); }
+
+    .hero-badges {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--teal-light);
+    }
+
+    /* SECTION SHARED */
+    section { padding: 5rem 2.5rem; }
+
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-eyebrow {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 540px;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+    }
+
+    /* PROBLEM BAND */
+    .problem-band {
+      background: var(--off-white);
+      padding: 4rem 2.5rem;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .problem-card {
+      background: var(--white);
+      border-left: 3px solid var(--gold);
+      padding: 1.5rem 1.75rem;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .problem-card p {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    .problem-card strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--off-white);
+      border-radius: 8px;
+      padding: 2rem;
+      border-top: 3px solid transparent;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .service-card:hover {
+      border-top-color: var(--teal);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(11,31,58,0.1);
+    }
+
+    .service-card.accent { border-top-color: var(--gold); }
+    .service-card.accent:hover { border-top-color: var(--gold-light); }
+
+    .service-icon {
+      width: 44px; height: 44px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.3rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .service-list li {
+      font-size: 0.83rem;
+      color: var(--text);
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .service-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-size: 0.75rem;
+    }
+
+    /* BUSINESS DEV PRICING */
+    .biz-dev { background: var(--off-white); }
+
+    .pricing-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 0.5rem 1.2rem;
+      border: 1.5px solid var(--gray-light);
+      background: var(--white);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--gray);
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .price-item {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--gray-light);
+    }
+
+    .price-item h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
+    }
+
+    .price-item .price {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--teal);
+    }
+
+    .price-item p {
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-top: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .payment-note {
+      margin-top: 1.5rem;
+      padding: 1rem 1.5rem;
+      background: var(--white);
+      border-radius: 6px;
+      border-left: 3px solid var(--gold);
+      font-size: 0.88rem;
+      color: var(--gray);
+    }
+
+    /* LABS */
+    .labs { background: var(--navy); }
+    .labs .section-title { color: var(--white); }
+    .labs .section-sub { color: rgba(255,255,255,0.6); }
+    .labs .section-eyebrow { color: var(--gold); }
+
+    .labs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .lab-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 1.75rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .lab-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(200,150,62,0.4);
+    }
+
+    .lab-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      margin-bottom: 1rem;
+    }
+
+    .lab-tag.live { background: rgba(29,106,114,0.3); color: var(--teal-light); }
+    .lab-tag.beta { background: rgba(200,150,62,0.25); color: var(--gold-light); }
+    .lab-tag.soon { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); }
+
+    .lab-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .lab-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+    }
+
+    /* CONSULTING PRICING */
+    .consulting-pricing { background: var(--off-white); }
+
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.75rem;
+      margin-top: 1rem;
+    }
+
+    .tier-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2rem;
+      border: 1px solid var(--gray-light);
+      position: relative;
+    }
+
+    .tier-card.featured {
+      border-color: var(--teal);
+      box-shadow: 0 4px 20px rgba(29,106,114,0.15);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: -12px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--teal);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+    }
+
+    .tier-card h3 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+
+    .tier-card .tier-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+
+    .tier-card .tier-desc {
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      line-height: 1.55;
+    }
+
+    .tier-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .tier-list li {
+      font-size: 0.87rem;
+      color: var(--text);
+      padding-left: 1.25rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .tier-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .stat-box {
+      padding: 1.25rem;
+      border-left: 3px solid var(--gold);
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--gray);
+      margin-top: 0.2rem;
+    }
+
+    .about-certs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+
+    .cert-chip {
+      background: var(--navy);
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+    }
+
+    .about-text p {
+      font-size: 0.97rem;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    /* CONTACT */
+    .contact { background: var(--navy); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-sub { color: rgba(255,255,255,0.6); max-width: 480px; }
+    .contact .section-eyebrow { color: var(--gold); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 4px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.35); }
+
+    .contact-form select option { background: var(--navy); }
+
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus { border-color: var(--teal-light); }
+
+    .contact-form textarea { min-height: 140px; resize: vertical; }
+
+    .contact-info { padding-top: 1rem; }
+
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-item-icon {
+      width: 36px; height: 36px;
+      background: rgba(29,106,114,0.3);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item-text p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .contact-item-text strong {
+      font-size: 0.9rem;
+      color: var(--white);
+      display: block;
+      margin-top: 0.1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #070F1C;
+      padding: 2.5rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem;
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    footer p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 0.8rem;
+      margin-left: 1.5rem;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--gold); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--navy); padding: 1.5rem 2rem; gap: 1rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: block; }
+      nav { padding: 1rem 1.5rem; }
+      section { padding: 3.5rem 1.5rem; }
+      .hero { padding: 6rem 1.5rem 4rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">ACIRE<span>.</span></a>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#business">Business Dev</a></li>
+    <li><a href="#labs">ACIRE Labs</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Work With Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">ACIRE Innovations Inc. — South Carolina LLC</span>
+    <h1>Consulting. Products.<br><em>Possibilities.</em></h1>
+    <p class="hero-sub">We help businesses grow through compliance consulting, strategic development, and purpose-built technology. From federal frameworks to your bottom line.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start a Conversation</a>
+      <a href="#services" class="btn-outline">Explore Services</a>
+    </div>
+    <div class="hero-badges">
+      <span class="badge"><span class="badge-dot"></span> SAM Registered</span>
+      <span class="badge"><span class="badge-dot"></span> CIPP/G · CDPSE · CAP</span>
+      <span class="badge"><span class="badge-dot"></span> 15+ Years Federal Experience</span>
+      <span class="badge"><span class="badge-dot"></span> WOSB</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM BAND -->
+<div class="problem-band">
+  <div class="section-inner">
+    <span class="section-eyebrow">The Problems We Solve</span>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <strong>Compliance Gaps Costing You Contracts</strong>
+        <p>Missing controls, incomplete documentation, or failed audits are keeping you out of opportunities you've already earned.</p>
+      </div>
+      <div class="problem-card">
+        <strong>Growth Without a Roadmap</strong>
+        <p>You're building, but without the strategic structure, branding, or business development foundation to scale.</p>
+      </div>
+      <div class="problem-card">
+        <strong>Technology That Doesn't Fit</strong>
+        <p>Off-the-shelf tools weren't built for your workflow. You need something built from the field — not a whiteboard.</p>
+      </div>
+      <div class="problem-card">
+        <strong>Too Much Manual, Not Enough Margin</strong>
+        <p>Hours lost to processes that should be automated. Every manual step is time away from the work that actually grows your business.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <span class="section-eyebrow">Core Services</span>
+    <h2 class="section-title">Three lanes. One firm.</h2>
+    <p class="section-sub">Whether you need compliance infrastructure, strategic growth support, or custom technology — ACIRE delivers outcomes that move your business forward.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🔐</div>
+        <h3>Privacy & Compliance Consulting</h3>
+        <p>Federal-grade privacy and security expertise applied to your specific regulatory environment — FedRAMP, FISMA, NIST, CMMC, and beyond.</p>
+        <ul class="service-list">
+          <li>System Security Plan (SSP) development</li>
+          <li>Privacy Impact Assessments (PIA)</li>
+          <li>ATO preparation and support</li>
+          <li>NIST 800-53 / 800-171 gap analysis</li>
+          <li>Policy and procedure development</li>
+          <li>ISSO / ISSM advisory support</li>
+        </ul>
+      </div>
+      <div class="service-card accent">
+        <div class="service-icon">📈</div>
+        <h3>Business Development Services</h3>
+        <p>Strategic foundation-building for small businesses ready to grow — from brand identity to government contracting positioning.</p>
+        <ul class="service-list">
+          <li>Brand identity & design</li>
+          <li>Website design & development</li>
+          <li>Business entity setup & SAM.gov registration</li>
+          <li>GovCon positioning & capability statements</li>
+          <li>Social media & content strategy</li>
+          <li>Marketing collateral design</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <h3>Technology & App Development</h3>
+        <p>Custom tools built for the way your business actually works — not repurposed templates. We build what the market hasn't built yet.</p>
+        <ul class="service-list">
+          <li>Custom SaaS product development</li>
+          <li>Workflow automation</li>
+          <li>AI-powered tools & integrations</li>
+          <li>Data pipelines & reporting</li>
+          <li>GRC tooling & compliance dashboards</li>
+          <li>Mobile & web application development</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS DEV PRICING -->
+<section id="business" class="biz-dev">
+  <div class="section-inner">
+    <span class="section-eyebrow">Business Development Pricing</span>
+    <h2 class="section-title">Transparent pricing.<br>Real deliverables.</h2>
+    <p class="section-sub">Flat-rate services so you know exactly what you're getting and what it costs. No surprises.</p>
+
+    <div class="pricing-tabs">
+      <button class="tab-btn active" onclick="showTab('branding')">Branding & Design</button>
+      <button class="tab-btn" onclick="showTab('web')">Web Presence</button>
+      <button class="tab-btn" onclick="showTab('setup')">Business Setup</button>
+    </div>
+
+    <div id="branding" class="tab-panel active">
+      <div class="pricing-grid">
+        <div class="price-item">
+          <h4>Logo Design</h4>
+          <div class="price">$350</div>
+          <p>3 concepts, 2 revision rounds, final files in all formats</p>
+        </div>
+        <div class="price-item">
+          <h4>Brand Identity Package</h4>
+          <div class="price">$750</div>
+          <p>Logo, color palette, typography, brand guide document</p>
+        </div>
+        <div class="price-item">
+          <h4>Business Cards</h4>
+          <div class="price">$150</div>
+          <p>Design for print-ready file (printing separate)</p>
+        </div>
+        <div class="price-item">
+          <h4>Flyer Design</h4>
+          <div class="price">$125/piece</div>
+          <p>Event, promotional, or service flyers</p>
+        </div>
+        <div class="price-item">
+          <h4>Social Media Kit</h4>
+          <div class="price">$400</div>
+          <p>Profile images, banners, and 10 post templates</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="web" class="tab-panel">
+      <div class="pricing-grid">
+        <div class="price-item">
+          <h4>Landing Page</h4>
+          <div class="price">$800</div>
+          <p>Single-page site with contact form and mobile optimization</p>
+        </div>
+        <div class="price-item">
+          <h4>Multi-Page Site</h4>
+          <div class="price">$1,500</div>
+          <p>Up to 5 pages, contact form, mobile-responsive</p>
+        </div>
+        <div class="price-item">
+          <h4>Full Business Site</h4>
+          <div class="price">$2,500</div>
+          <p>Up to 10 pages, blog, contact, analytics setup</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="setup" class="tab-panel">
+      <div class="pricing-grid">
+        <div class="price-item">
+          <h4>Complete Business Setup Bundle</h4>
+          <div class="price">$650</div>
+          <p>LLC formation guidance, EIN application, SAM.gov registration, business bank account guidance, license research</p>
+        </div>
+        <div class="price-item">
+          <h4>SAM.gov Registration Only</h4>
+          <div class="price">$200</div>
+          <p>Full registration support and annual renewal reminder</p>
+        </div>
+        <div class="price-item">
+          <h4>Capability Statement</h4>
+          <div class="price">$300</div>
+          <p>GovCon-ready one-pager with NAICS codes and past performance</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="payment-note">
+      <strong>Payment Options:</strong> 50% deposit / 50% on delivery — or split into 3 equal payments for projects over $500. All projects begin upon receipt of deposit.
+    </div>
+  </div>
+</section>
+
+<!-- CONSULTING TIERS -->
+<section class="consulting-pricing">
+  <div class="section-inner">
+    <span class="section-eyebrow">Consulting Engagements</span>
+    <h2 class="section-title">Engagement models built for how you actually work.</h2>
+    <p class="section-sub">Advisory support, project-based engagements, or ongoing retainer — we meet you where you are.</p>
+    <div class="tier-grid">
+      <div class="tier-card">
+        <h3>Advisory</h3>
+        <div class="tier-price">$150<span style="font-size:1rem;font-weight:400;color:var(--gray)">/hr</span></div>
+        <p class="tier-desc">Targeted expertise for specific questions, reviews, or one-time assessments.</p>
+        <ul class="tier-list">
+          <li>1–2 hour sessions</li>
+          <li>Policy or document review</li>
+          <li>Compliance question responses</li>
+          <li>Strategy consultation</li>
+        </ul>
+      </div>
+      <div class="tier-card featured">
+        <span class="featured-badge">Most Popular</span>
+        <h3>Project</h3>
+        <div class="tier-price">Scoped</div>
+        <p class="tier-desc">Fixed-scope deliverables with defined timelines. You know exactly what you're getting.</p>
+        <ul class="tier-list">
+          <li>SSP / PIA development</li>
+          <li>Gap analysis & remediation plan</li>
+          <li>Policy suite build-out</li>
+          <li>ATO preparation package</li>
+          <li>Fixed price, milestone billing</li>
+        </ul>
+      </div>
+      <div class="tier-card">
+        <h3>Retainer</h3>
+        <div class="tier-price">$2,500<span style="font-size:1rem;font-weight:400;color:var(--gray)">/mo</span></div>
+        <p class="tier-desc">Ongoing compliance and advisory support for organizations that need a trusted expert on call.</p>
+        <ul class="tier-list">
+          <li>Up to 20 hours/month</li>
+          <li>Priority response time</li>
+          <li>Monthly compliance check-ins</li>
+          <li>Document maintenance</li>
+          <li>Renewal & deadline tracking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACIRE LABS -->
+<section id="labs" class="labs">
+  <div class="section-inner">
+    <span class="section-eyebrow">ACIRE Labs</span>
+    <h2 class="section-title">Built from the field.<br>Not a whiteboard.</h2>
+    <p class="section-sub">Every ACIRE product started as a problem we encountered in real work. We build the tools the market hasn't built yet.</p>
+    <div class="labs-grid">
+      <div class="lab-card">
+        <span class="lab-tag beta">Beta — July 2026</span>
+        <h3>OpportunityReady AI</h3>
+        <p>AI-powered grant and funding discovery platform for nonprofits, small businesses, and students. Find the money you didn't know existed.</p>
+      </div>
+      <div class="lab-card">
+        <span class="lab-tag soon">Coming Soon</span>
+        <h3>GovCon Compliance Training Tracker</h3>
+        <p>Lightweight SaaS for small federal contractors tracking NIST 800-53 role-based training, CMMC, FedRAMP, and FISMA completion with auto-generated SSP evidence packages.</p>
+      </div>
+      <div class="lab-card">
+        <span class="lab-tag soon">Coming Soon</span>
+        <h3>AI Governance & Privacy Tool</h3>
+        <p>Inventory AI use cases, classify by risk tier (EU AI Act / NIST AI RMF), run DPIA workflows, and export audit-ready governance packages.</p>
+      </div>
+      <div class="lab-card">
+        <span class="lab-tag soon">Coming Soon</span>
+        <h3>PostCraft</h3>
+        <p>AI-powered social content creation tool for busy professionals and small business owners. Draft, refine, and schedule — without the creative block.</p>
+      </div>
+      <div class="lab-card">
+        <span class="lab-tag soon">Coming Soon</span>
+        <h3>CertIQ</h3>
+        <p>Certification prep, study planning, and progress tracking for IT and compliance professionals. Study smarter, not longer.</p>
+      </div>
+      <div class="lab-card">
+        <span class="lab-tag live">Live</span>
+        <h3>GizOps</h3>
+        <p>Point-of-sale and operations management built for food service and catering businesses. Order management, client tracking, and reporting in one place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="section-eyebrow">About ACIRE</span>
+        <h2 class="section-title">Expertise you can deploy. Outcomes you can measure.</h2>
+        <p>ACIRE Innovations Inc. is a full-service consulting and technology firm founded by a privacy and compliance professional with 15+ years of federal experience across multiple agencies.</p>
+        <p>We work at the intersection of compliance, strategy, and technology — helping organizations build the infrastructure they need to grow, win contracts, and operate with confidence.</p>
+        <p>ACIRE is SAM-registered, fully operational with business banking and insurance, and certified to serve both federal and commercial clients as a Woman-Owned Small Business.</p>
+        <div class="about-certs">
+          <span class="cert-chip">CIPP/G</span>
+          <span class="cert-chip">CDPSE</span>
+          <span class="cert-chip">CAP</span>
+          <span class="cert-chip">ITIL v3</span>
+          <span class="cert-chip">CISM (In Progress)</span>
+          <span class="cert-chip">AIGP (In Progress)</span>
+        </div>
+      </div>
+      <div>
+        <div class="about-stats">
+          <div class="stat-box">
+            <div class="stat-num">15+</div>
+            <div class="stat-label">Years federal privacy & compliance experience</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">6</div>
+            <div class="stat-label">Products in the ACIRE Labs pipeline</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Service lanes — consulting, business dev, tech</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">SC</div>
+            <div class="stat-label">LLC registered · SAM registered · WOSB</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="section-inner">
+    <span class="section-eyebrow">Work With ACIRE</span>
+    <h2 class="section-title">Let's talk about what you're building.</h2>
+    <p class="section-sub">Tell us about your project. We'll respond within 2 business days.</p>
+    <div class="contact-grid">
+      <form class="contact-form" action="https://formspree.io/f/info@acireinnovationsinc.com" method="POST">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Email Address" required />
+        </div>
+        <input type="text" name="organization" placeholder="Organization / Company" />
+        <select name="service">
+          <option value="" disabled selected>Service Interest</option>
+          <option>Privacy & Compliance Consulting</option>
+          <option>Business Development Services</option>
+          <option>Technology / App Development</option>
+          <option>ACIRE Labs Product</option>
+          <option>Not sure yet — let's talk</option>
+        </select>
+        <select name="engagement">
+          <option value="" disabled selected>Engagement Type</option>
+          <option>Advisory (hourly)</option>
+          <option>Project-based</option>
+          <option>Monthly Retainer</option>
+          <option>Business Dev / One-time</option>
+        </select>
+        <textarea name="message" placeholder="Tell us about your project or challenge..."></textarea>
+        <button type="submit" class="btn-primary" style="width:100%;text-align:center;border:none;cursor:pointer;font-size:0.95rem;">Send Message</button>
+      </form>
+      <div class="contact-info">
+        <h3>How we work together</h3>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div class="contact-item-text">
+            <p>Email</p>
+            <strong>info@acireinnovationsinc.com</strong>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">⏱️</div>
+          <div class="contact-item-text">
+            <p>Response Time</p>
+            <strong>Within 2 business days</strong>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div class="contact-item-text">
+            <p>Location</p>
+            <strong>Maryland-based · Serving clients nationally</strong>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🏛️</div>
+          <div class="contact-item-text">
+            <p>Government Contracting</p>
+            <strong>SAM Registered · WOSB · NAICS: 541519, 541690, 541512, 541611</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ACIRE<span>.</span> Innovations Inc.</div>
+  <p>© 2026 ACIRE Innovations Inc. All rights reserved.</p>
+  <div>
+    <a href="#services">Services</a>
+    <a href="#labs">Labs</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
